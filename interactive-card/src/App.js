@@ -8,13 +8,16 @@ import {
   VStack,
   Button,
   HStack,
-  Text
+  Text,
+  Image
 } from '@chakra-ui/react'
 import { useState } from 'react';
-import bgCardFront from './assets/images/bg-card-front.png'
-import bgCardBack from './assets/images/bg-card-back.png'
+import bgCardFront from './assets/images/bg-card-front.png';
+import bgCardBack from './assets/images/bg-card-back.png';
+import Complete from './assets/images/icon-complete.svg';
 
 function App() {
+  const [submited, setSubmited] = useState(false);
   const [input, setInput] = useState({
     cardholder: '',
     cardNumber: '',
@@ -22,6 +25,18 @@ function App() {
     expDateYY: '',
     CVC: ''
   })
+
+  function sendData(value) {
+    if (value === 'open') {
+      if (!isErrorCardholder && !isErrorCardNumber && !isErrorExpDate && !isErrorCVC) {
+        setSubmited(true);
+      }
+      return
+    }
+    if (value === 'close') {
+      setSubmited(false);
+    }
+  }
 
   const isErrorCardholder = input.cardholder === ''
   const isErrorCardNumber = input.cardNumber === ''
@@ -42,7 +57,7 @@ function App() {
               <Text className='bgtext'>{input.CVC || '000'}</Text>
             </VStack>
           </VStack>
-          <VStack className='form-container' >
+          {!submited ? <VStack className='form-container'>
             <FormControl isInvalid={isErrorCardholder} >
               <FormLabel>CARDHOLDER NAME</FormLabel>
               <Input
@@ -104,10 +119,34 @@ function App() {
                 )}
               </FormControl>
             </HStack>
-            <Button w='100%' bgColor='#21092F' color='#fff' fontWeight='500'>
+            <Button
+              w='100%'
+              bgColor='#21092F'
+              color='#fff'
+              fontWeight='500'
+              onClick={() => sendData('open')}
+            >
               Confirm
             </Button>
-          </VStack>
+          </VStack> :
+            <VStack spacing={10}>
+              <VStack spacing={5}>
+                <Image src={Complete} alt='completion icon' />
+                <Text fontSize='28px'>THANK YOU!</Text>
+                <Text fontSize='18px'>We've added your card details</Text>
+              </VStack>
+              <Button
+                w='100%'
+                bgColor='#21092F'
+                color='#fff'
+                fontWeight='500'
+                onClick={() => sendData('close')}
+              >
+                Continue
+              </Button>
+            </VStack>
+          }
+
         </VStack>
       </header>
     </div>
