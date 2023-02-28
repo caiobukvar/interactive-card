@@ -1,30 +1,21 @@
 
-import './App.css';
 import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  Input,
-  VStack,
-  Button,
-  HStack,
-  Text,
-  Image,
-  Stack
-} from '@chakra-ui/react'
+  Button, FormControl, FormErrorMessage, FormLabel, HStack, Image, Input, Stack, Text, VStack
+} from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import bgCardFront from './assets/images/bg-card-front.png';
+import './App.css';
 import bgCardBack from './assets/images/bg-card-back.png';
+import bgCardFront from './assets/images/bg-card-front.png';
 import Complete from './assets/images/icon-complete.svg';
 
 function App() {
   const [submited, setSubmited] = useState(false);
   const [input, setInput] = useState({
-    cardholder: '',
-    cardNumber: '',
-    expDateMM: '',
-    expDateYY: '',
-    CVC: ''
+    cardholder: null,
+    cardNumber: null,
+    expDateMM: null,
+    expDateYY: null,
+    CVC: null
   })
 
   function sendData(value) {
@@ -43,6 +34,10 @@ function App() {
   const isErrorCardNumber = input.cardNumber === ''
   const isErrorExpDate = input.expDateMM === '' || input.expDateYY === ''
   const isErrorCVC = input.CVC === ''
+
+  useEffect(() => {
+
+  }, []);
 
   return (
     <div className="App">
