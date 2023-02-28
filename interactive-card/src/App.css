@@ -94,6 +94,14 @@
   font-size: 16px;
 }
 
+.card-logo {
+  position: absolute;
+  left: 35px;
+  top: 35px;
+  width: 84px;
+  height: 47px;
+}
+
 .card-number-text {
   position: absolute;
   left: 35px;
@@ -127,6 +135,12 @@
     width: 100%;
     min-height: 300px;
     background-color: #21092F;
+  }
+
+  .card-top-content {
+    width: 100%;
+    min-height: 300px;
+    max-width: 500px;
     position: relative;
   }
 
@@ -165,6 +179,14 @@
     bottom: 68px;
     color: #fff;
     font-size: 14px;
+  }
+
+  .card-logo {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    width: 54px;
+    height: 30px;
   }
 
   .card-number-text {

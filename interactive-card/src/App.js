@@ -2,10 +2,11 @@
 import {
   Button, FormControl, FormErrorMessage, FormLabel, HStack, Image, Input, Stack, Text, VStack
 } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import bgCardBack from './assets/images/bg-card-back.png';
 import bgCardFront from './assets/images/bg-card-front.png';
+import cardLogo from './assets/images/card-logo.svg';
 import Complete from './assets/images/icon-complete.svg';
 
 function App() {
@@ -40,13 +41,16 @@ function App() {
       <header className="App-header">
         <Stack className="card-container">
           <VStack className='card-top'>
-            <VStack className='bgcard card--1' src={bgCardFront} alt="cc-front">
-              <Text className='card-number-text'>{input.cardNumber || '0000 0000 0000 0000'}</Text>
-              <Text className='card-holder-text'>{input.cardholder || 'Jane Appleseed'}</Text>
-              <Text className='card-exp-text'>{`${input.expDateMM || "00"}/${input.expDateYY || "00"}`}</Text>
-            </VStack>
-            <VStack className='bgcard card--2' src={bgCardBack} alt="cc-back">
-              <Text className='cvc-text'>{input.CVC || '000'}</Text>
+            <VStack className='card-top-content'>
+              <VStack className='bgcard card--1' src={bgCardFront} alt="cc-front">
+                <Image className='card-logo' src={cardLogo} />
+                <Text className='card-number-text'>{input.cardNumber || '0000 0000 0000 0000'}</Text>
+                <Text className='card-holder-text'>{input.cardholder || 'Jane Appleseed'}</Text>
+                <Text className='card-exp-text'>{`${input.expDateMM || "00"}/${input.expDateYY || "00"}`}</Text>
+              </VStack>
+              <VStack className='bgcard card--2' src={bgCardBack} alt="cc-back">
+                <Text className='cvc-text'>{input.CVC || '000'}</Text>
+              </VStack>
             </VStack>
           </VStack>
           {!submited ? <VStack className='form-container'>
