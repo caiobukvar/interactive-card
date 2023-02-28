@@ -79,6 +79,13 @@
   width: 100%;
 }
 
+.bottom-inputs {
+  display: flex;
+  align-items: flex-start !important;
+  min-height: 120px;
+  text-align: start;
+}
+
 .cvc-text {
   position: absolute;
   right: 55px;
@@ -148,6 +155,10 @@
     background-size: cover;
   }
 
+  .bottom-inputs {
+    min-height: 150px;
+  }
+
   .cvc-text {
     position: absolute;
     right: 35px;
@@ -178,5 +189,11 @@
     bottom: 15px;
     color: #fff;
     font-size: 14px;
+  }
+}
+
+@media (max-width: 398px) {
+  .cvc-label {
+    height: 47px;
   }
 }

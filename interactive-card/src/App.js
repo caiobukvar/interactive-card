@@ -35,10 +35,6 @@ function App() {
   const isErrorExpDate = input.expDateMM === '' || input.expDateYY === ''
   const isErrorCVC = input.CVC === ''
 
-  useEffect(() => {
-
-  }, []);
-
   return (
     <div className="App">
       <header className="App-header">
@@ -71,7 +67,7 @@ function App() {
               <FormControl isInvalid={isErrorCardNumber} >
                 <FormLabel>CARD NUMBER</FormLabel>
                 <Input
-                  type='text'
+                  type='number'
                   value={input.cardNumber}
                   placeholder="e.g. 1234 5678 9123 0000"
                   onChange={(e) => setInput({ ...input, cardNumber: e.target.value })}
@@ -81,7 +77,7 @@ function App() {
                 )}
               </FormControl>
 
-              <HStack textAlign='start'>
+              <HStack className="bottom-inputs">
                 <FormControl isInvalid={isErrorExpDate} >
                   <FormLabel>EXP. DATE (MM/YY)</FormLabel>
                   <HStack>
@@ -99,12 +95,12 @@ function App() {
                     />
                   </HStack>
                   {isErrorExpDate && (
-                    <FormErrorMessage h='30px'>Card expiration date is required.</FormErrorMessage>
+                    <FormErrorMessage >Card expiration date is required.</FormErrorMessage>
                   )}
                 </FormControl>
 
-                <FormControl isInvalid={isErrorCVC} >
-                  <FormLabel>CVC</FormLabel>
+                <FormControl isInvalid={isErrorCVC}>
+                  <FormLabel className='cvc-label'>CVC</FormLabel>
                   <HStack alingItems='center'>
                     <Input
                       type='text'
@@ -114,7 +110,7 @@ function App() {
                     />
                   </HStack>
                   {isErrorCVC && (
-                    <FormErrorMessage h='30px' textAlign='start'>CVC is required.</FormErrorMessage>
+                    <FormErrorMessage textAlign='start'>CVC is required.</FormErrorMessage>
                   )}
                 </FormControl>
               </HStack>
